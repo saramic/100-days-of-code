@@ -4,6 +4,8 @@ GEM
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
     rack (3.0.0)
+    rack-session (0.3.0)
+      rack (>= 3.0.0.beta1)
     rackup (0.2.2)
       rack (>= 3.0.0.beta1)
       webrick
@@ -20,6 +22,7 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  rack-session (~> 0.3.0)
   rackup (~> 0.2.2)
   sidekiq (~> 7.0)
 
