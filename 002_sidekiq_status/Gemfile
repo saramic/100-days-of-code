@@ -2,7 +2,16 @@
 
 source "https://rubygems.org"
 
-gem "rackup", "~> 0.2.2"
-gem "sidekiq", "~> 7.0"
+# gem "rackup", "~> 0.2.2"
+# gem "sidekiq", "~> 7.0"
+# use rack + webrick with sidekiq 6 to be able to work with sidekiq-status
+# which does NOT support changes to redis 5.0 and/or redis-client...
+#   RedisClient::CommandError at /statuses
+#   ERR unknown command 'scan_each', with args beginning with: 'match'
+#     'sidekiq:status:*' 'count' '100'  (RedisClient::CommandError)
+#     redis-client-0.10.0/lib/redis_client/connection_mixin.rb: in call, line 22
+gem "rack", "~> 2"
+gem "sidekiq", "~> 6"
+gem "webrick", "~> 1.7"
 
-gem "rack-session", "~> 0.3.0"
+gem "sidekiq-status", "~> 2.1"

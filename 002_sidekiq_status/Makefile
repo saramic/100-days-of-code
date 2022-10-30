@@ -29,11 +29,12 @@ sidekiq:
 .PHONY: demo
 demo:
 	echo $(duration) | \
-	ruby -I lib -e 'require "jobs/long_steady_job"; \
+	bundle exec ruby -I . -I lib -e 'require "config/environment"; \
+	require "jobs/long_steady_job"; \
 	value = !$$stdin.eof && $$stdin.readline.to_i; \
-	value.zero? ? \
+	puts "http://localhost:9292/statuses/" + (value.zero? ? \
 		Jobs::LongSteadyJob.perform_async() : \
-		Jobs::LongSteadyJob.perform_async(value)'
+		Jobs::LongSteadyJob.perform_async(value))'
 
 .PHONY: usage
 usage:
