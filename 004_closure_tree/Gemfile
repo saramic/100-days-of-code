@@ -8,5 +8,6 @@ gem "pg", "~> 1.4"
 gem "standalone_migrations", "~> 7.1"
 gem "standard", "~> 1.16", require: false
 gem "rspec", "~> 3.12", require: false
+gem "rspec-example_steps", "~> 3.1"
 gem "rubocop-rake", "~> 0.6.0", require: false
 gem "rubocop-rspec", "~> 2.14", require: false

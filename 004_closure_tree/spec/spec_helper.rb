@@ -11,7 +11,34 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
+
+require "capybara/rspec"
+require "rspec/example_steps"
+require "bundler/setup"
+Bundler.require(:default)
+
+# Breaking Changes for 3.0.0: rspec/core
+# * Custom formatters are now required to call
+#   `RSpec::Core::Formatters.register(formatter_class, *notifications)`
+#   where `notifications` is the list of events the formatter wishes to
+#   be notified about. Notifications are handled by methods matching the
+#   names on formatters. This allows us to add or remove notifications
+#   without breaking existing formatters. (Jon Rowe)
 #
+# And this is NOT called in rspec-example_steps I suppose?
+RSpec::Core::Formatters.register(
+  RSpec::Core::Formatters::DocumentationFormatter,
+  :example_group_started,
+  :example_group_finished,
+  :example_passed,
+  :example_pending,
+  :example_failed,
+  :example_started,
+  :example_step_passed,
+  :example_step_pending,
+  :example_step_failed,
+)
+
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
