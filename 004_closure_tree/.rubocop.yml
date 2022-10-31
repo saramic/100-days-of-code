@@ -25,3 +25,5 @@ AllCops:
   Exclude:
     - Guardfile
     - spec/spec_helper.rb
+    - db/migrate/*.rb
+    - db/schema.rb

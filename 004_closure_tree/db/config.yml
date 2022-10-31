@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: closure_tree_demo
+
+test:
+  <<: *default
+  database: test_closure_tree_demo
