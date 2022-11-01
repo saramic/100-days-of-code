@@ -23,3 +23,15 @@ rake db:create db:migrate
 
 RAILS_ENV=test rake db:drop db:create db:migrate
 ```
+
+## Closure Tree Migration Generation
+
+the following threw errors, is it possible to call a generator without Rails?
+
+```
+bundle exec ruby -e 'require "bundler/setup"; \
+  Bundler.require(:default); \
+  Rails::Generators.invoke("closure_tree:migration", \
+    destination_root: Pathname.new(`pwd`.chomp))' \
+    company
+```
