@@ -27,14 +27,18 @@ rubocop:
 rubocop-fix:
 	bundle exec rubocop -A
 
-.PHONY: day01 day01pII
+.PHONY: day01 day01pII day02 day02pII
 day01:
 	bundle exec ruby -I lib -e "require 'day_01_sonar_sweep'; puts Day01SonarSweep.new.perform(ARGV[0])" inputs/2021_1_input.txt
 day01pII:
 	bundle exec ruby -I lib -e "require 'day_01_sonar_sweep'; puts Day01SonarSweep.new.perform_pII(ARGV[0])" inputs/2021_1_input.txt
+day02:
+	bundle exec ruby -I lib -e "require 'day_02_dive'; puts Day02Dive.new(ARGV[0]).perform" inputs/2021_2_input.txt
+day02pII:
+	bundle exec ruby -I lib -e "require 'day_02_dive'; puts Day02Dive.new(ARGV[0], pII: true).perform" inputs/2021_2_input.txt
 
 .PHONY: all
-all: day01 day01pII
+all: day01 day01pII day02 day02pII
 
 .PHONY: usage
 usage:

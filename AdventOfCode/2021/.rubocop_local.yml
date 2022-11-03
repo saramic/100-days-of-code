@@ -1,3 +1,6 @@
+Naming/VariableName:
+  AllowedPatterns: ['pII']
+
 Style/FrozenStringLiteralComment:
   Enabled: true
   EnforcedStyle: always_true
