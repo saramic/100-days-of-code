@@ -1,0 +1,4 @@
+# mange dependencies with brew https://brew.sh/
+
+cask "anaconda"       # Distribution of the Python and R programming languages
+                      # for scientific computing https://www.anaconda.com
