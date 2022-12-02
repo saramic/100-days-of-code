@@ -27,14 +27,34 @@ rubocop:
 rubocop-fix:
 	bundle exec rubocop -A
 
-.PHONY: day01 day01pII
+.PHONY: day01 day01pII day02 day02pII
 day01:
-	bundle exec ruby -I lib -e "require 'day_01_calorie_counter'; puts Day01CalorieCounter.new.perform(ARGV[0])" inputs/2022_1_input.txt
+	@echo "${YELLOW}Day 01${GREEN}"
+	bundle exec ruby -I lib -e "require 'day_01_calorie_counter';\
+		puts Day01CalorieCounter.new.perform(ARGV[0])" \
+		inputs/2022_1_input.txt
+	@echo "${NC}"
 day01pII:
-	bundle exec ruby -I lib -e "require 'day_01_calorie_counter'; puts Day01CalorieCounter.new.perform_pII(ARGV[0])" inputs/2022_1_input.txt
+	@echo "${YELLOW}Day 01 pII${GREEN}"
+	bundle exec ruby -I lib -e "require 'day_01_calorie_counter'; \
+		puts Day01CalorieCounter.new.perform_pII(ARGV[0])" \
+		inputs/2022_1_input.txt
+	@echo "${NC}"
+day02:
+	@echo "${YELLOW}Day 02${GREEN}"
+	bundle exec ruby -I lib -e "require 'day_02_rock_paper_scissors'; \
+		puts Day02RockPaperScissors.new.perform(ARGV[0])" \
+		inputs/2022_2_input.txt
+	@echo "${NC}"
+day02pII:
+	@echo "${YELLOW}Day 02${GREEN}"
+	bundle exec ruby -I lib -e "require 'day_02_rock_paper_scissors'; \
+		puts Day02RockPaperScissors.new.perform_pII(ARGV[0])" \
+		inputs/2022_2_input.txt
+	@echo "${NC}"
 
 .PHONY: all
-all: day01 day01pII
+all: day01 day01pII day02 day02pII
 
 .PHONY: usage
 usage:
@@ -50,4 +70,7 @@ usage:
 	@echo "${YELLOW}make rubocop-fix${NC}                   rubocop fix everything"
 	@echo
 	@echo "${YELLOW}make all${NC}                           run all the solutions"
+	@echo
+	@echo "${YELLOW}make day02${NC}                         run solution for day 02"
+	@echo "${YELLOW}make day02pII${NC}                      run solution for day 02 part II"
 	@echo
