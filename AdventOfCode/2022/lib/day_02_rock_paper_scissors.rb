@@ -5,6 +5,8 @@ class Day02RockPaperScissors
   include InputHelpers
 
   def rps_value(play) = %w[X Y Z].index(play) + 1
+  def draw_value(oponent, play) = DRAW_HASH[oponent] == play ? 3 : 0
+  def win_value(oponent, play) = WIN_HASH[oponent] == play ? 6 : 0
 
   DRAW_HASH = %w[A B C].zip(%w[X Y Z]).to_h
   LOOSE_HASH = %w[A B C].zip(%w[Z X Y]).to_h
@@ -33,12 +35,11 @@ class Day02RockPaperScissors
   def calculate(input_filename, play_algo)
     file_to_tokens(input_filename)
       .map do |oponent, you|
-        score = 0
         you_play = play_algo.call(oponent, you)
-        score += rps_value(you_play)
-        score += 3 if DRAW_HASH[oponent] == you_play
-        score += 6 if WIN_HASH[oponent] == you_play
-        score
+
+        rps_value(you_play) +
+          draw_value(oponent, you_play) +
+          win_value(oponent, you_play)
       end.sum
   end
 end
