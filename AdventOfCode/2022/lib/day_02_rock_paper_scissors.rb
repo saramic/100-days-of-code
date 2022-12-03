@@ -5,7 +5,9 @@ class Day02RockPaperScissors
   include InputHelpers
 
   def rps_value(play) = %w[X Y Z].index(play) + 1
+
   def draw_value(oponent, play) = DRAW_HASH[oponent] == play ? 3 : 0
+
   def win_value(oponent, play) = WIN_HASH[oponent] == play ? 6 : 0
 
   DRAW_HASH = %w[A B C].zip(%w[X Y Z]).to_h

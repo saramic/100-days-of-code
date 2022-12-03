@@ -27,7 +27,7 @@ rubocop:
 rubocop-fix:
 	bundle exec rubocop -A
 
-.PHONY: day01 day01pII day02 day02pII
+.PHONY: day01 day01pII day02 day02pII day03 day03II
 day01:
 	@echo "${YELLOW}Day 01${GREEN}"
 	bundle exec ruby -I lib -e "require 'day_01_calorie_counter';\
@@ -52,9 +52,21 @@ day02pII:
 		puts Day02RockPaperScissors.new.perform_pII(ARGV[0])" \
 		inputs/2022_2_input.txt
 	@echo "${NC}"
+day03:
+	@echo "${YELLOW}Day 03${GREEN}"
+	bundle exec ruby -I lib -e "require 'day_03_program'; \
+		puts Day03Program.new.perform(ARGV[0])" \
+		inputs/2022_3_input.txt
+	@echo "${NC}"
+day03pII:
+	@echo "${YELLOW}Day 03 part II${GREEN}"
+	bundle exec ruby -I lib -e "require 'day_03_program'; \
+		puts Day03Program.new.perform_pII(ARGV[0])" \
+		inputs/2022_3_input.txt
+	@echo "${NC}"
 
 .PHONY: all
-all: day01 day01pII day02 day02pII
+all: day01 day01pII day02 day02pII day03 day03pII
 
 .PHONY: usage
 usage:
