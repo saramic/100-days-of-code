@@ -9,7 +9,7 @@ class Day04Program
       .map do |line|
         sections = line
           .split(",")
-          .map { |range| eval(range.sub("-", "..")).to_set }
+          .map { |range| Range.new(*range.split("-").map(&:to_i)).to_set }
         sections[0].subset?(sections[1]) || sections[1].subset?(sections[0])
       end.count(true)
   end
@@ -19,7 +19,7 @@ class Day04Program
       .map do |line|
         !line
           .split(",")
-          .map { |range| eval(range.sub("-", "..")).to_set }
+          .map { |range| Range.new(*range.split("-").map(&:to_i)).to_set }
           .reduce(&:&)
           .empty?
       end.count(true)
