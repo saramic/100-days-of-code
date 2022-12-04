@@ -6,6 +6,12 @@ RSpec.describe Day03Program do
   let(:input) do
     generate_file_with_contents("input.txt") do
       <<~EO_REPORT
+        vJrwpWtwJgWrhcsFMMfFFhFp
+        jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+        PmmdzqPrVvPwwTWBwg
+        wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+        ttgJtRGJQctTZtZT
+        CrZsJsPPZsGzwwsLwLmpwMDw
       EO_REPORT
     end
   end
@@ -13,13 +19,13 @@ RSpec.describe Day03Program do
   it "returns part 1 answer" do
     expect(
       Day03Program.new.perform(input),
-    ).to eq nil # rubocop:disable RSpec/BeEq
+    ).to eq 157
   end
 
   it "returns part 2 answer" do
     expect(
       Day03Program.new.perform_pII(input),
-    ).to eq nil # rubocop:disable RSpec/BeEq
+    ).to eq 70
   end
 
   context "when input is the real data file for ME" do
@@ -30,13 +36,13 @@ RSpec.describe Day03Program do
     it "returns part 1 answer" do
       expect(
         Day03Program.new.perform(input),
-      ).to eq nil # rubocop:disable RSpec/BeEq
+      ).to eq 7_691
     end
 
     it "returns part 2 answer" do
       expect(
         Day03Program.new.perform_pII(input),
-      ).to eq nil # rubocop:disable RSpec/BeEq
+      ).to eq 2_508
     end
   end
 end
