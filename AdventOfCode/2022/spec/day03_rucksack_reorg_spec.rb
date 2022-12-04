@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "day_03_program"
+require "day_03_rucksack_reorg"
 
-RSpec.describe Day03Program do
+RSpec.describe Day03RucksackReorg do
   let(:input) do
     generate_file_with_contents("input.txt") do
       <<~EO_REPORT
@@ -18,13 +18,13 @@ RSpec.describe Day03Program do
 
   it "returns part 1 answer" do
     expect(
-      Day03Program.new.perform(input),
+      Day03RucksackReorg.new.perform(input),
     ).to eq 157
   end
 
   it "returns part 2 answer" do
     expect(
-      Day03Program.new.perform_pII(input),
+      Day03RucksackReorg.new.perform_pII(input),
     ).to eq 70
   end
 
@@ -35,13 +35,13 @@ RSpec.describe Day03Program do
 
     it "returns part 1 answer" do
       expect(
-        Day03Program.new.perform(input),
+        Day03RucksackReorg.new.perform(input),
       ).to eq 7_691
     end
 
     it "returns part 2 answer" do
       expect(
-        Day03Program.new.perform_pII(input),
+        Day03RucksackReorg.new.perform_pII(input),
       ).to eq 2_508
     end
   end

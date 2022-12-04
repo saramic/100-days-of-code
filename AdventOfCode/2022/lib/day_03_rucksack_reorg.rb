@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "input_helpers"
-class Day03Program
+class Day03RucksackReorg
   include InputHelpers
 
   def perform(input_filename)

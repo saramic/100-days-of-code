@@ -54,14 +54,14 @@ day02pII:
 	@echo "${NC}"
 day03:
 	@echo "${YELLOW}Day 03${GREEN}"
-	bundle exec ruby -I lib -e "require 'day_03_program'; \
-		puts Day03Program.new.perform(ARGV[0])" \
+	bundle exec ruby -I lib -e "require 'day_03_rucksack_reorg'; \
+		puts Day03RucksackReorg.new.perform(ARGV[0])" \
 		inputs/2022_3_input.txt
 	@echo "${NC}"
 day03pII:
 	@echo "${YELLOW}Day 03 part II${GREEN}"
-	bundle exec ruby -I lib -e "require 'day_03_program'; \
-		puts Day03Program.new.perform_pII(ARGV[0])" \
+	bundle exec ruby -I lib -e "require 'day_03_rucksack_reorg'; \
+		puts Day03RucksackReorg.new.perform_pII(ARGV[0])" \
 		inputs/2022_3_input.txt
 	@echo "${NC}"
 
