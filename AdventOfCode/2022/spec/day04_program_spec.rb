@@ -6,6 +6,12 @@ RSpec.describe Day04Program do
   let(:input) do
     generate_file_with_contents("input.txt") do
       <<~EO_REPORT
+        2-4,6-8
+        2-3,4-5
+        5-7,7-9
+        2-8,3-7
+        6-6,4-6
+        2-6,4-8
       EO_REPORT
     end
   end
@@ -13,13 +19,13 @@ RSpec.describe Day04Program do
   it "returns part 1 answer" do
     expect(
       Day04Program.new.perform(input),
-    ).to eq nil # rubocop:disable RSpec/BeEq
+    ).to eq 2
   end
 
   it "returns part 2 answer" do
     expect(
       Day04Program.new.perform_pII(input),
-    ).to eq nil # rubocop:disable RSpec/BeEq
+    ).to eq 4
   end
 
   context "when input is the real data file for ME" do
@@ -30,13 +36,13 @@ RSpec.describe Day04Program do
     it "returns part 1 answer" do
       expect(
         Day04Program.new.perform(input),
-      ).to eq nil # rubocop:disable RSpec/BeEq
+      ).to eq 471
     end
 
     it "returns part 2 answer" do
       expect(
         Day04Program.new.perform_pII(input),
-      ).to eq nil # rubocop:disable RSpec/BeEq
+      ).to eq 888
     end
   end
 end
