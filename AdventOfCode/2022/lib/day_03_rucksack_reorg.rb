@@ -7,19 +7,26 @@ class Day03RucksackReorg
   def perform(input_filename)
     file_to_lines(input_filename)
       .map do |line|
-      left = line[0..(line.length / 2) - 1].chars.to_set
-      right = line[(line.length / 2)..].chars.to_set
-      different = (left & right).first
-      (("a".."z").to_a | ("A".."Z").to_a).index(different) + 1
-    end.sum
+        left, right = line.partition(%r(.{#{line.size / 2}}))[1, 2]
+        find_odd_character([left, right])
+      end.map(&method(:letter_to_number_offset)).sum
   end
 
   def perform_pII(input_filename)
     file_to_lines(input_filename)
       .each_slice(3)
       .map do |lines|
-        different = lines.map { _1.chars.to_set }.reduce(&:&).first
-        (("a".."z").to_a | ("A".."Z").to_a).index(different) + 1
-      end.sum
+        find_odd_character(lines)
+      end.map(&method(:letter_to_number_offset)).sum
+  end
+
+  private
+
+  def letter_to_number_offset(letter)
+    (("a".."z").to_a | ("A".."Z").to_a).index(letter) + 1
+  end
+
+  def find_odd_character(ary)
+    ary.map { _1.chars.to_set }.reduce(&:&).first
   end
 end
