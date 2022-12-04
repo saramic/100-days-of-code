@@ -40,9 +40,13 @@ day03:
 	bin/run_day.rb 2022 3
 day03pII:
 	bin/run_day.rb 2022 3 true
+day04:
+	bin/run_day.rb 2022 4
+day04pII:
+	bin/run_day.rb 2022 4 true
 
 .PHONY: all
-all: day01 day01pII day02 day02pII day03 day03pII
+all: day01 day01pII day02 day02pII day03 day03pII day04 day04pII
 
 .PHONY: usage
 usage:
