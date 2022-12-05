@@ -17,6 +17,7 @@ puzzle-input:
 
 .PHONY: build
 build:
+	bundle exec rspec -I templates templates/day00_program_spec.rb
 	bundle exec rspec
 
 .PHONY: rubocop
