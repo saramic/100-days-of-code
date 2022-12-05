@@ -5,17 +5,11 @@ class Day05SupplyStacks
   include InputHelpers
 
   ALGO_ONE_AT_A_TIME = lambda do |num, from, to, state|
-    num.times {
-      from_pop = state[from].pop
-      state[to].push(from_pop)
-    }
+    num.times { state[to].push(state[from].pop) }
   end
 
   ALGO_BATCH_AT_A_TIME = lambda do |num, from, to, state|
-    from_pop = []
-    num.times { from_pop << state[from].pop }
-    from_pop.reverse!
-    state[to].concat(from_pop)
+    state[to].concat(state[from].pop(num))
   end
 
   def perform(input_filename)
