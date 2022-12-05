@@ -4,38 +4,39 @@ require "input_helpers"
 class Day05SupplyStacks
   include InputHelpers
 
+  ALGO_ONE_AT_A_TIME = lambda do |num, from, to, state|
+    num.times {
+      from_pop = state[from].pop
+      state[to].push(from_pop)
+    }
+  end
+
+  ALGO_BATCH_AT_A_TIME = lambda do |num, from, to, state|
+    from_pop = []
+    num.times { from_pop << state[from].pop }
+    from_pop.reverse!
+    state[to].concat(from_pop)
+  end
+
   def perform(input_filename)
-    (state_in, moves_in) = File.read(input_filename).split("\n\n")
-    state = read_state(state_in)
-    moves_in
-      .split("\n")
-      .each do |move|
-        matches = /move (\d+) from (\d+) to (\d+)/.match(move)
-        num = matches[1].to_i
-        from = matches[2].to_i
-        to = matches[3].to_i
-        num.times {
-          from_pop = state[from].pop
-          state[to].push(from_pop)
-        }
-      end
-    state.map { |col| col[1].last }.join
+    calculate(input_filename, ALGO_ONE_AT_A_TIME)
   end
 
   def perform_pII(input_filename)
+    calculate(input_filename, ALGO_BATCH_AT_A_TIME)
+  end
+
+  private
+
+  def calculate(input_filename, algo)
     (state_in, moves_in) = File.read(input_filename).split("\n\n")
     state = read_state(state_in)
     moves_in
       .split("\n")
       .each do |move|
         matches = /move (\d+) from (\d+) to (\d+)/.match(move)
-        num = matches[1].to_i
-        from = matches[2].to_i
-        to = matches[3].to_i
-        from_pop = []
-        num.times { from_pop << state[from].pop }
-        from_pop.reverse!
-        state[to].concat(from_pop)
+        (num, from, to) = matches.to_a.slice(1..-1).map(&:to_i).to_a
+        algo.call(num, from, to, state)
       end
     state.map { |col| col[1].last }.join
   end
