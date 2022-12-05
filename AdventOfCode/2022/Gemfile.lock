@@ -85,6 +85,7 @@ PLATFORMS
 
 DEPENDENCIES
   guard-rspec (~> 4.7)
+  pry (~> 0.14.1)
   rspec (~> 3.12)
   rubocop-rspec (~> 2.14)
   standard (~> 1.16)

@@ -12,6 +12,7 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 
+require "pry"
 Dir[File.join(__dir__, "support/**/*.rb")].sort.each(&method(:require))
 
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
