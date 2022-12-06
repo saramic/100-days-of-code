@@ -10,9 +10,9 @@ class Day06TuningTrouble
   end
 
   def calculate(filename, num)
-    File.open(filename).each_char.with_object([]) do |char, read_chars|
-      read_chars << char
-      return read_chars.length if read_chars.last(num).uniq.count == num
-    end
+    File.read(filename).each_char
+      .each_cons(num).with_index.find do |chars, index|
+        chars.uniq.count == num
+      end.last + num
   end
 end
