@@ -29,7 +29,8 @@ rubocop-fix:
 	bundle exec rubocop -A
 
 .PHONY: day01 day01pII day02 day02pII day03 day03II
-.PHONY: day04 day04pII day05 day05pII
+.PHONY: day04 day04pII day05 day05pII day06 day06pII
+.PHONY: day07 day07pII
 day01:
 	bin/run_day.rb 2022 1
 day01pII:
@@ -50,9 +51,17 @@ day05:
 	bin/run_day.rb 2022 5
 day05pII:
 	bin/run_day.rb 2022 5 true
+day06:
+	bin/run_day.rb 2022 6
+day06pII:
+	bin/run_day.rb 2022 6 true
+day07:
+	bin/run_day.rb 2022 7
+day07pII:
+	bin/run_day.rb 2022 7 true
 
 .PHONY: all
-all: day01 day01pII day02 day02pII day03 day03pII day04 day04pII day05 day05pII
+all: day01 day01pII day02 day02pII day03 day03pII day04 day04pII day05 day05pII day06 day06pII day07 day07pII
 
 .PHONY: usage
 usage:
