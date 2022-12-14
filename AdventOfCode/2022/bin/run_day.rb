@@ -24,5 +24,5 @@ answer = part_2 ?
   day_class.perform_pII(filename) :
   day_class.perform(filename)
 
-puts "#{GREEN}Day %02d %s#{NC}" % [day, part_2 ? "pI" : "pII"]
+puts "#{GREEN}Day %02d %s#{NC}" % [day, part_2 ? "pII" : "pI"]
 puts "\t#{YELLOW}Answer: #{NC}#{answer}"
