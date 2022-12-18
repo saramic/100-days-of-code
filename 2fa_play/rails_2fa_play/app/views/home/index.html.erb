@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+  signed in as: <%= current_user.email %>
+  <br />
+  <%= form_for(User.new, url: destroy_user_session_path, method: :delete) do |f| %>
+    <%= f.submit(
+      "sign out",
+    ) %>
+  <% end %>
+<% else %>
+  <%= link_to(
+    "sign up",
+    new_user_registration_path,
+  ) %>
+  <br />
+  <%= link_to(
+    "login",
+    new_user_session_path,
+  ) %>
+<% end %>
