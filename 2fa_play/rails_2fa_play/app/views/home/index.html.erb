@@ -1,9 +1,15 @@
 <% if user_signed_in? %>
   signed in as: <%= current_user.email %>
   <br />
-  <%= form_for(User.new, url: destroy_user_session_path, method: :delete) do |f| %>
+  <%= form_for(current_user, url: destroy_user_session_path, method: :delete) do |f| %>
     <%= f.submit(
       "sign out",
+    ) %>
+  <% end %>
+  <br />
+  <%= form_for(current_user, url: setup_2fa_home_path) do |f| %>
+    <%= f.submit(
+      "setup 2FA",
     ) %>
   <% end %>
 <% else %>
